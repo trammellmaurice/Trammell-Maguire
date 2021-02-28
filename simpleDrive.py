@@ -5,7 +5,7 @@ from pid import pidController
 
 #POSITIVE = COUNTER CLOCKWISE
 
-DESIRED_POS = (1,0,0)
+DESIRED_POS = (2,0,0)
 
 """
 DISTANCE
