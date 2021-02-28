@@ -3,6 +3,8 @@ import math
 from turtleAPI import robot
 from pid import pidController
 
+#POSITIVE = COUNTER CLOCKWISE
+
 DESIRED_POS = (1,0,0)
 
 """
@@ -30,7 +32,7 @@ def s_error(desired):
     return (desired-current)
 
 """
-LOCALIZE
+UPDATE
 Update all position and steering methods at once
 """
 def update(desired_pos):
@@ -51,7 +53,7 @@ EXECUTION
 turtle = robot() # initialize robot
 
 # PID CONTROLLER
-steering = pidController(2) # make a p controller for steering with kp
+steering = pidController(0.5) # make a p controller for steering with kp
 
 # initialize bot by getting world position
 update(turtle.getPositionTup())

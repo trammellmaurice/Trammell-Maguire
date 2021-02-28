@@ -1,3 +1,4 @@
+import math
 """
 PID CONTROLLER CLASS
 """
@@ -28,7 +29,7 @@ class pidController:
         return (self.p())
 
 if __name__ == '__main__':
-    controller = pidController(5)
-    controller.update(1)
-    controller.update(1.3)
+    controller = pidController(0.5)
+    controller.update(math.pi/2)
+
     print(controller.pid())
