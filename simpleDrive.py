@@ -66,3 +66,4 @@ while not rospy.is_shutdown():
     turtle.drive(steering.pid(),throttle.pid())
     if distance(turtle.getPositionTup(),DESIRED_POS) < 0.02:
         turtle.stop()
+        break
