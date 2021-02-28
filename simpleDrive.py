@@ -52,20 +52,15 @@ EXECUTION
 """
 turtle = robot() # initialize robot
 
-# PID CONTROLLER
+# PID CONTROLLERS
 steering = pidController(0.5) # make a p controller for steering with kp
-
-# initialize bot by getting world position
-update()
-
-# make bot drive
-turtle.drive(0,0.25)
 
 # position loop
 while not rospy.is_shutdown():
     # get current position
     update()
     print(steering.pid())
+    # make bot drive based on error from pid controllers
     turtle.drive(steering.pid(),0.25)
 
 
