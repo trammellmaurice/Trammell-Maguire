@@ -38,14 +38,14 @@ Update all position and steering methods at once
 def update():
     # get error for yaw and update steering
     steering.update(s_error(DESIRED_POS[2]))
-    #d = d_error(desired_pos)
+    throttle.update(d_error(DESIRED_POS))
 
 """
 CORRECT
 Corrections from PID controllers
 """
 def correct():
-    return steering.pid()
+    return (steering.pid(),throttle.pid())
 
 """
 EXECUTION
@@ -53,15 +53,17 @@ EXECUTION
 turtle = robot() # initialize robot
 
 # PID CONTROLLERS
-steering = pidController(10) # make a p controller for steering with kp
+steering = pidController(10) # make a p controller for steering with just kp
+throttle = pidController(10) # make a p controller for throttle with just kp
 
 # position loop
 while not rospy.is_shutdown():
     # get current position
     update()
-    print(steering.pid())
+    # print(steering.pid())
+    print(throttle.pid())
     # make bot drive based on error from pid controllers
-    turtle.drive(steering.pid(),0.5)
+    turtle.drive(correct())
 
 
 turtle.stop()
