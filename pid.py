@@ -24,7 +24,8 @@ class pidController:
         return (self.kd * (self.errors[len(self.errors)-1]-self.errors[len(self.errors)-2]))
 
     def pid(self):
-        return (self.p()+self.i()+self.d())
+        #return (self.p()+self.i()+self.d())
+        return (self.p())
 
 if __name__ == '__main__':
     controller = pidController(5)

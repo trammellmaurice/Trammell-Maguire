@@ -2,6 +2,9 @@ import rospy
 import math
 from turtleAPI import robot
 from pid import pidController
+
+DESIRED_POS = (1,0,0)
+
 """
 DISTANCE
 Find distance between two points
@@ -26,13 +29,32 @@ def s_error(desired):
     #desired-current = error
     return (desired-current)
 
+"""
+LOCALIZE
+Update all position and steering methods at once
+"""
+def update(desired_pos):
+    # get error for yaw and update steering
+    steering.update(s_error(desired_pos[2]))
+    #d = d_error(desired_pos)
+
+"""
+CORRECT
+Corrections from PID controllers
+"""
+def correct():
+    return steering.pid()
+
+"""
+EXECUTION
+"""
 turtle = robot() # initialize robot
+
+# PID CONTROLLER
 steering = pidController(2) # make a p controller for steering with kp
 
-
-
 # initialize bot by getting world position
-start_pos = turtle.getPositionTup()
+update(turtle.getPositionTup())
 
 # make bot drive
 turtle.drive(0,5)
@@ -40,9 +62,7 @@ turtle.drive(0,5)
 # position loop
 while not rospy.is_shutdown():
     # get current position
-    current_pos = turtle.getPositionTup()
-    # check distance driven
-    if distance(start_pos,current_pos) > 5:
-        break # stop at correct distance
+    update(turtle.getPositionTup())
+    print(steering.pid())
 
 turtle.stop()
