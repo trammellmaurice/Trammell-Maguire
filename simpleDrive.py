@@ -56,7 +56,7 @@ turtle = robot() # initialize robot
 steering = pidController(0.5) # make a p controller for steering with kp
 
 # initialize bot by getting world position
-update(turtle.getPositionTup())
+update(DESIRED_POS)
 
 # make bot drive
 turtle.drive(0,0.25)
