@@ -13,9 +13,12 @@ start_pos = turtle.getPositionTup()
 # make bot drive
 turtle.drive(0,5)
 
+# position loop
 while not rospy.is_shutdown():
+    # get current position
     current_pos = turtle.getPositionTup()
+    # check distance driven
     if distance(start_pos,current_pos) > 5:
-        break
+        break # stop at correct distance
 
 turtle.stop()
