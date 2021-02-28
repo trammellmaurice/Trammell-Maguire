@@ -65,6 +65,7 @@ turtle.drive(0,0.25)
 while not rospy.is_shutdown():
     # get current position
     update()
+    print(steering.pid())
     turtle.drive(steering.pid(),0.25)
 
 
