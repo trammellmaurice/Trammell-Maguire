@@ -54,7 +54,7 @@ turtle = robot() # initialize robot
 
 # PID CONTROLLERS
 steering = pidController(10) # make a p controller for steering with just kp
-throttle = pidController(0.01) # make a p controller for throttle with just kp
+throttle = pidController(0.1) # make a p controller for throttle with just kp
 
 # position loop
 while not rospy.is_shutdown():
