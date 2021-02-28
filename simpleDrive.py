@@ -57,12 +57,13 @@ steering = pidController(2) # make a p controller for steering with kp
 update(turtle.getPositionTup())
 
 # make bot drive
-turtle.drive(0,5)
+turtle.drive(0,0.25)
 
 # position loop
 while not rospy.is_shutdown():
     # get current position
     update(turtle.getPositionTup())
-    print(steering.pid())
+    turtle.drive(steering.pid())
+
 
 turtle.stop()
