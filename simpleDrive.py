@@ -61,9 +61,8 @@ while not rospy.is_shutdown():
     # get current position
     update()
     # print(steering.pid())
-    print(throttle.pid())
+    #print(throttle.pid())
     # make bot drive based on error from pid controllers
     turtle.drive(steering.pid(),throttle.pid())
-
-
-turtle.stop()
+    if distance(turtle.getPositionTup(),DESIRED_POS) < 0.02:
+        turtle.stop()
