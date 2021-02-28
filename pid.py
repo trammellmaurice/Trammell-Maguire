@@ -11,7 +11,7 @@ class pidController:
         self.errors = []
 
     def update(self, err):
-        if len(self.errors) > 5:
+        if len(self.errors) >= 5:
             self.errors.pop(0)
         self.errors.append(err)
 

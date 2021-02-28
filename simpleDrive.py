@@ -53,7 +53,7 @@ EXECUTION
 turtle = robot() # initialize robot
 
 # PID CONTROLLERS
-steering = pidController(10) # make a p controller for steering with kp
+steering = pidController(100) # make a p controller for steering with kp
 
 # position loop
 while not rospy.is_shutdown():
@@ -61,7 +61,7 @@ while not rospy.is_shutdown():
     update()
     print(steering.pid())
     # make bot drive based on error from pid controllers
-    turtle.drive(steering.pid(),0.25)
+    turtle.drive(steering.pid(),0.5)
 
 
 turtle.stop()
