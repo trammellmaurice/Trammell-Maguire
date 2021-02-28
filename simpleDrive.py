@@ -35,9 +35,9 @@ def s_error(desired):
 UPDATE
 Update all position and steering methods at once
 """
-def update(desired_pos):
+def update():
     # get error for yaw and update steering
-    steering.update(s_error(desired_pos[2]))
+    steering.update(s_error(DESIRED_POS[2]))
     #d = d_error(desired_pos)
 
 """
@@ -56,7 +56,7 @@ turtle = robot() # initialize robot
 steering = pidController(0.5) # make a p controller for steering with kp
 
 # initialize bot by getting world position
-update(DESIRED_POS)
+update()
 
 # make bot drive
 turtle.drive(0,0.25)
@@ -64,7 +64,7 @@ turtle.drive(0,0.25)
 # position loop
 while not rospy.is_shutdown():
     # get current position
-    update(DESIRED_POS)
+    update()
     turtle.drive(steering.pid(),0.25)
 
 
