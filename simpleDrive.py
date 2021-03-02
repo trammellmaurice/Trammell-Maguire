@@ -6,7 +6,7 @@ from pid import pidController
 
 #POSITIVE = COUNTER CLOCKWISE
 
-DESIRED_POS = (0,-2)
+DESIRED_POS = (0,2)
 """
 HEADING
 Calculate heading to get to point
@@ -14,7 +14,6 @@ Calculate heading to get to point
 def head():
     # get current position
     curr_pos = turtle.getPositionTup()
-    new_coord = (0,1)
     # CALCULATE UNIT VECTOR FOR CURRENT HEADING
     unit_vector = (round(math.cos(curr_pos[2])),math.sin(curr_pos[2]))
     # print(unit_vector)
