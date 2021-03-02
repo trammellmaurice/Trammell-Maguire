@@ -60,8 +60,8 @@ while not rospy.is_shutdown():
     while d_error() > 0.02:
         throttle.update(d_error())
         steering.update(head())
-        print(steering.pid())
-        print(throttle.pid())
+        # print(steering.pid())
+        # print(throttle.pid())
     #     # make bot drive based on error from pid controllers
     #     turtle.drive(round(steering.pid()),(throttle.pid()))
     turtle.stop()
