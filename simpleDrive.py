@@ -15,7 +15,7 @@ def head():
     # get current position
     curr_pos = turtle.getPositionTup()
     # CALCULATE UNIT VECTOR FOR CURRENT HEADING
-    unit_vector = (math.cos(math.round(curr_pos[2])),math.sin(math.round(curr_pos[2])))
+    unit_vector = (math.cos(round(curr_pos[2])),math.sin(round(curr_pos[2])))
     # print(unit_vector)
     # CALCULATE VECTOR FROM CURRENT POSITION TO END POSITION (b-a)
     course = (DESIRED_POS[0]-curr_pos[0],DESIRED_POS[1]-curr_pos[1])
