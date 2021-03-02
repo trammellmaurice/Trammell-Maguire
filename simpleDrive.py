@@ -45,7 +45,7 @@ EXECUTION
 turtle = robot() # initialize robot
 
 # PID CONTROLLERS
-steering = pidController(0.25,1,0.2) # make a p controller for steering with just kp
+steering = pidController(0.25,0,0.2) # make a p controller for steering with just kp
 throttle = pidController(0.5) # make a p controller for throttle with just kp
 
 # position loop
