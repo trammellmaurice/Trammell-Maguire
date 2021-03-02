@@ -41,8 +41,8 @@ def distance(start,fin):
 DISTANCE ERROR
 Find the error in distance from current position to desired position
 """
-def d_error(desired):
-    return distance(turtle.getPositionTup(),desired)
+def d_error():
+    return distance(turtle.getPositionTup(),DESIRED_POS)
 
 """
 EXECUTION
@@ -55,13 +55,17 @@ throttle = pidController(0.5) # make a p controller for throttle with just kp
 
 # position loop
 while not rospy.is_shutdown():
-    throttle.update(d_error(DESIRED_POS))
-    steering.update(head())
-    # print(steering.pid())
-    #print(throttle.pid())
-    # make bot drive based on error from pid controllers
-    turtle.drive(steering.pid(),throttle.pid())
-    if distance(turtle.getPositionTup(),DESIRED_POS) < 0.01:
-        rospy.loginfo(turtle.getPositionTup())
-        turtle.stop()
-        break
+    # turning phase
+    while head() > 0.02:
+        steering.update(head())
+        turtle.drive(steering.pid(),0)
+    turtle.stop()
+    while d_error() > 0.02:
+        throttle.update(d_error(DESIRED_POS))
+        steering.update(head())
+        # print(steering.pid())
+        #print(throttle.pid())
+        # make bot drive based on error from pid controllers
+        turtle.drive(steering.pid(),throttle.pid())
+    turtle.stop()
+    break
