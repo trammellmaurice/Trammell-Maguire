@@ -43,7 +43,7 @@ EXECUTION
 turtle = robot() # initialize robot
 
 # PID CONTROLLERS
-steering_controller = pidController(0.25) # make a p controller for steering with just kp
+steering_controller = pidController(0.5) # make a p controller for steering with just kp
 throttle_controller = pidController(0.5) # make a p controller for throttle with just kp
 
 rate = rospy.Rate(20)
