@@ -30,6 +30,6 @@ class pidController:
 
 if __name__ == '__main__':
     controller = pidController(0.5)
-    controller.update(1)
-    controller.update(0.9)
+    controller.update(-1.51)
+    controller.update(-1.51)
     print(controller.pid())
