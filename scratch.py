@@ -33,7 +33,7 @@ rate = rospy.Rate(10)
 while not rospy.is_shutdown():
     steering_error = steeringError()
     rospy.loginfo(steering_error)
-    while abs(steering_error) > 0.1:
+    if abs(steering_error) > 0.1:
         if steering_error > 0:
             turtle.drive(0.25,0)
         elif steering_error < 0:
