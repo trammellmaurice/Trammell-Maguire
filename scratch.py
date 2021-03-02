@@ -1,0 +1,33 @@
+import math
+
+import rospy
+from turtleAPI import robot
+
+END = (-1,0) # test destination
+START = (0,0,3*(math.pi)/2) # test start
+
+"""
+FIND STEERING ERROR
+Calculate steering error to get to point
+"""
+def steeringError():
+    # get current position
+    curr_pos = turtle.getPositionTup()
+    # CALCULATE VECTOR FROM CURRENT POSITION TO END POSITION (b-a)
+    course = (END[0]-curr_pos[0],END[1]-curr_pos[1])
+    # print(course)
+    # FIND ANGLE BETWEEN TWO VECTORS
+    angle = math.atan2(course[1],course[0]) - curr_pos[2]
+    return angle
+
+"""
+EXECUTION
+"""
+turtle = robot() # initialize robot
+
+rospy.init_node('test')
+rate = rospy.Rate(10)
+
+while not rospy.is_shutdown():
+    rospy.loginfo(steeringError())
+    rate.sleep()

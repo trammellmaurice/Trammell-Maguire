@@ -14,14 +14,11 @@ Calculate heading to get to point
 def head():
     # get current position
     curr_pos = turtle.getPositionTup()
-    # CALCULATE UNIT VECTOR FOR CURRENT HEADING
-    unit_vector = (math.cos(round(curr_pos[2])),math.sin(round(curr_pos[2])))
-    # print(unit_vector)
     # CALCULATE VECTOR FROM CURRENT POSITION TO END POSITION (b-a)
     course = (DESIRED_POS[0]-curr_pos[0],DESIRED_POS[1]-curr_pos[1])
     # print(course)
     # FIND ANGLE BETWEEN TWO VECTORS
-    angle = math.atan2(course[1],course[0]) - math.atan2(curr_pos[1],curr_pos[0])
+    angle = math.atan2(course[1],course[0]) - curr_pos[2]
     return angle
 
 """
