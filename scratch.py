@@ -25,7 +25,6 @@ EXECUTION
 """
 turtle = robot() # initialize robot
 
-rospy.init_node('test')
 rate = rospy.Rate(10)
 
 while not rospy.is_shutdown():
