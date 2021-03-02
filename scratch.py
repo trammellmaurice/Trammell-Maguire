@@ -39,5 +39,4 @@ while not rospy.is_shutdown():
         elif steering_error < 0:
             turtle.drive(-0.25,0)
         rate.sleep()
-    else:
-        turtle.stop()
+    turtle.stop()
