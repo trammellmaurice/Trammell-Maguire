@@ -60,6 +60,7 @@ Update all position and steering methods at once
 """
 def update():
     # get error for yaw and update steering
+    print(head())
     steering.update(head())
     throttle.update(d_error(DESIRED_POS))
     return 0
