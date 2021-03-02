@@ -45,38 +45,18 @@ def d_error(desired):
     return distance(turtle.getPositionTup(),desired)
 
 """
-STEERING ERROR
-Find the error in yaw
-"""
-def s_error(desired):
-    # get current yaw
-    current = turtle.getPositionTup()[2]
-    #desired-current = error
-    return (desired-current)
-
-"""
-UPDATE
-Update all position and steering methods at once
-"""
-def update():
-    # get error for yaw and update steering
-    steering.update(head())
-    throttle.update(d_error(DESIRED_POS))
-    return 0
-
-"""
 EXECUTION
 """
 turtle = robot() # initialize robot
 
 # PID CONTROLLERS
-steering = pidController(10,1,2) # make a p controller for steering with just kp
+steering = pidController(0.5,1,2) # make a p controller for steering with just kp
 throttle = pidController(0.5) # make a p controller for throttle with just kp
 
 # position loop
 while not rospy.is_shutdown():
-    # get current position
-    update()
+    throttle.update(d_error(DESIRED_POS))
+    steering.update(head())
     # print(steering.pid())
     #print(throttle.pid())
     # make bot drive based on error from pid controllers
