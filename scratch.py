@@ -66,8 +66,11 @@ while not rospy.is_shutdown():
 
     # get initial distance error to start moving
     while distanceError() > 0.2: # driving loop
-        distance_error = distanceError()
+        distance_error = distanceError() # update distance error
+        steering_error = steeringError() # update steering error
+        throttle_controller.update(distance_error)
+        steering_controller.update(steering_error)
         rospy.loginfo(distance_error)
-        turtle.drive(0,0.2)
+        turtle.drive(steering_controller.pid(),throttle_controller.pid())
         rate.sleep()
     turtle.stop()
