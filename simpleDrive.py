@@ -62,7 +62,7 @@ def update():
     # get error for yaw and update steering
     steering.update(head())
     throttle.update(d_error(DESIRED_POS))
-    return null
+    return 0
 
 """
 EXECUTION
