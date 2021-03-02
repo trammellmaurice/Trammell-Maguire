@@ -2,7 +2,7 @@ import math
 import numpy as np
 from turtleAPI import robot
 
-DESIRED_POS = (2,0)
+DESIRED_POS = (0,2)
 
 def head():
     # get current position
