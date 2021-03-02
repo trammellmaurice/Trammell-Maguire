@@ -63,3 +63,4 @@ while not rospy.is_shutdown():
         turtle.drive(0,0.2)
         rate.sleep()
     turtle.stop()
+    break
