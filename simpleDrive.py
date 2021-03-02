@@ -52,7 +52,7 @@ throttle = pidController(0.5) # make a p controller for throttle with just kp
 while not rospy.is_shutdown():
     # turning phase
     while abs(head()) > 0.02:
-        # steering.update(head())
+        steering.update(head())
         # turtle.drive(steering.pid(),0)
         print(head())
         print(steering.pid())
