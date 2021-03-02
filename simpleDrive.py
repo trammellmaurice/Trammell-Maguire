@@ -53,7 +53,8 @@ while not rospy.is_shutdown():
     # turning phase
     while head() > 0.02:
         steering.update(head())
-        turtle.drive(steering.pid(),0)
+        # turtle.drive(steering.pid(),0)
+        print(steering.pid())
     turtle.stop()
     while d_error() > 0.02:
         throttle.update(d_error())
