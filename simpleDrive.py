@@ -60,10 +60,9 @@ Update all position and steering methods at once
 """
 def update():
     # get error for yaw and update steering
-    print(head())
     steering.update(head())
     throttle.update(d_error(DESIRED_POS))
-    return 0
+    return null
 
 """
 EXECUTION
@@ -84,4 +83,7 @@ while not rospy.is_shutdown():
     turtle.drive(steering.pid(),throttle.pid())
     if distance(turtle.getPositionTup(),DESIRED_POS) < 0.02:
         turtle.drive(steering.pid(),0)
-        break
+        if s_error(DESIRED_POS[2]) <= 0.02:
+            rospy.loginfo(turtle.getPositionTup())
+            turtle.stop()
+            break
