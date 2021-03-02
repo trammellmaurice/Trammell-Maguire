@@ -3,8 +3,10 @@ import math
 import rospy
 from turtleAPI import robot
 
-END = (-1,0) # test destination
-START = (0,0,3*(math.pi)/2) # test start
+# get input
+END = input()
+#END = (-1,0) # test destination
+# START = (0,0,3*(math.pi)/2) # test start
 
 """
 FIND STEERING ERROR
@@ -23,6 +25,8 @@ def steeringError():
 """
 EXECUTION
 """
+
+
 turtle = robot() # initialize robot
 
 rate = rospy.Rate(10)
