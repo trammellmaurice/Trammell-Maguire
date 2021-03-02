@@ -46,7 +46,7 @@ rate = rospy.Rate(20)
 while not rospy.is_shutdown():
     # get input
     END = input()
-    
+
     # get initial steering error to turn
     while abs(steeringError()) > 0.1: # turning loop
         steering_error = steeringError() # update steering error
@@ -65,4 +65,3 @@ while not rospy.is_shutdown():
         turtle.drive(0,0.2)
         rate.sleep()
     turtle.stop()
-    break
