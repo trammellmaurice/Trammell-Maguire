@@ -61,7 +61,7 @@ while not rospy.is_shutdown():
         turtle.drive(steering.pid(),0)
     turtle.stop()
     while d_error() > 0.02:
-        throttle.update(d_error(DESIRED_POS))
+        throttle.update(d_error())
         steering.update(head())
         # print(steering.pid())
         #print(throttle.pid())
