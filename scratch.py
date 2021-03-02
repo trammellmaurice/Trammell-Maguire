@@ -42,7 +42,7 @@ EXECUTION
 
 turtle = robot() # initialize robot
 
-rate = rospy.Rate(10)
+rate = rospy.Rate(20)
 
 while not rospy.is_shutdown():
     # get initial steering error to turn
