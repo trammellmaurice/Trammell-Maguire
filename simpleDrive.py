@@ -59,9 +59,9 @@ Update all position and steering methods at once
 """
 def update():
     # get error for yaw and update steering
-    steering.update(s_error(head())
+    steering.update(head())
     throttle.update(d_error(DESIRED_POS))
-    pass
+    return null
 
 """
 EXECUTION
