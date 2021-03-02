@@ -44,7 +44,7 @@ turtle = robot() # initialize robot
 
 # PID CONTROLLERS
 steering_controller = pidController(0.75) # make a p controller for steering with just kp
-throttle_controller = pidController(0.5,0,0.5) # make a p controller for throttle with just kp
+throttle_controller = pidController(0.5,0.25,0.5) # make a p controller for throttle with just kp
 
 rate = rospy.Rate(20)
 
@@ -62,7 +62,7 @@ while not rospy.is_shutdown():
     turtle.stop()
 
     # get initial distance error to start moving
-    while distanceError() > 0.05: # driving loop
+    while distanceError() > 0.01: # driving loop
         distance_error = distanceError()
         steering_error = steeringError()
         throttle_controller.update(distance_error)  # update distance error
