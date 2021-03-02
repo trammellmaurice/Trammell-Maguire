@@ -22,13 +22,8 @@ def head():
     course = (DESIRED_POS[0]-curr_pos[0],DESIRED_POS[1]-curr_pos[1])
     # print(course)
     # FIND ANGLE BETWEEN TWO VECTORS
-    # DO DOT PRODUCTS
-    top = np.dot(unit_vector,course)
-    # calculate magnitude
-    unit_vector = math.sqrt(unit_vector[0]**2+unit_vector[1]**2)
-    course = math.sqrt(course[0]**2+course[1]**2)
-    diff = math.acos(top/(unit_vector*course))
-    return diff
+    angle = math.atan2(course[1],course[0]) - math.atan2(curr_pos[1],curr_pos[0])
+    return angle
 
 """
 DISTANCE
@@ -66,6 +61,6 @@ while not rospy.is_shutdown():
         print(steering.pid())
         print(throttle.pid())
     #     # make bot drive based on error from pid controllers
-    #     turtle.drive(steering.pid(),throttle.pid())
+    #     turtle.drive(round(steering.pid()),(throttle.pid()))
     turtle.stop()
     break
