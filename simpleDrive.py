@@ -6,7 +6,7 @@ from pid import pidController
 
 #POSITIVE = COUNTER CLOCKWISE
 
-DESIRED_POS = (0,2)
+DESIRED_POS = (0,-2)
 """
 HEADING
 Calculate heading to get to point
