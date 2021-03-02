@@ -3,8 +3,7 @@ import math
 import rospy
 from turtleAPI import robot
 
-# get input
-END = input()
+
 #END = (-1,0) # test destination
 # START = (0,0,3*(math.pi)/2) # test start
 
@@ -45,6 +44,9 @@ turtle = robot() # initialize robot
 rate = rospy.Rate(20)
 
 while not rospy.is_shutdown():
+    # get input
+    END = input()
+    
     # get initial steering error to turn
     while abs(steeringError()) > 0.1: # turning loop
         steering_error = steeringError() # update steering error
